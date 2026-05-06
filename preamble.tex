@@ -1,0 +1,148 @@
+% --- DEFINICIÓN DE LA CLASE (Obligatorio) ---
+\documentclass[12pt, a4paper]{report}
+
+\usepackage{silence}
+\WarningFilter{microtype}{Unknown slot number}
+
+% --- 1. Idiomas y Fuentes generales ---
+\usepackage[basque,spanish]{babel}
+\usepackage{fontspec}
+\usepackage{microtype}
+\DeclareMicrotypeAlias{TU}{cmr}
+
+% --- 2. Colores y Gráficos (SIEMPRE DEFINIR COLORES ANTES) ---
+\usepackage[dvipsnames,svgnames,table]{xcolor}
+\usepackage{graphicx}
+\usepackage{tikz}
+\graphicspath{ {./images/} } % ¡LaTeX ya sabe que debe buscar aquí!
+
+% Colores originales de la plantilla
+\definecolor{beltza}{RGB}{0,0,0}
+\definecolor{kode_urdina}{RGB}{30, 70, 110}
+
+% Colores y comandos para arreglar el archivo "resumen.tex"
+\definecolor{eus-color}{RGB}{100, 100, 100}
+\definecolor{eng-color}{RGB}{100, 100, 100}
+\newcommand{\serif}{\rmfamily}
+\newcommand{\serifthick}{\rmfamily\bfseries}
+
+% --- 3. Configuración de fuentes ---
+\setsansfont{EHUSans}[
+    Path = ./fonts/,
+    Extension = .otf,
+    UprightFont = EHUSans-Regular,
+    BoldFont = EHUSans-Bold,
+    ItalicFont = EHUSans-Italic,
+    BoldItalicFont = EHUSans-BoldItalic
+]
+\setromanfont{EHUSerif}[
+    Path = ./fonts/,
+    Extension = .otf,
+    UprightFont = EHUSerif-Regular,
+    BoldFont = EHUSerif-Bold,
+    ItalicFont = EHUSerif-Italic,
+    BoldItalicFont = EHUSerif-BoldItalic
+]
+\renewcommand{\familydefault}{\sfdefault}
+
+% --- 4. Resaltado de Código ---
+\definecolor{kode_grisa}{RGB}{100, 100, 100}
+
+\let\oldtexttt\texttt
+\renewcommand{\texttt}[1]{%
+    {%
+        \color{kode_grisa}
+        \fontsize{12pt}{12pt}\selectfont
+        \oldtexttt{#1}
+    }%
+}
+
+% --- 5. Diseño de Página ---
+\usepackage{geometry}
+\geometry{
+    a4paper,
+    left=30mm, right=25mm, top=30mm, bottom=30mm,
+    headheight=15pt
+}
+\usepackage{setspace}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small \alumno}
+\fancyhead[R]{\small \titulo}
+\fancyfoot[C]{\thepage}
+
+% --- 6. Formato de Títulos ---
+\usepackage{titlesec}
+
+\titleformat{\chapter}[hang]
+    {\normalfont\huge\bfseries\color{beltza}\raggedright}
+    {\thechapter.\ }
+    {10pt}
+    {\Huge}
+\titlespacing*{\chapter}{0pt}{5pt}{15pt}
+
+\titleformat{\section}
+    {\normalfont\Large\bfseries\raggedright}
+    {\thesection}{1em}{}
+\titlespacing*{\section}{0pt}{22pt}{14pt}
+
+\titleformat{\subsection}
+    {\normalfont\large\bfseries\raggedright}
+    {\thesubsection}{1em}{}
+\titlespacing*{\subsection}{0pt}{16pt}{10pt}
+
+% --- 7. Tablas y Flotantes ---
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\setlist{itemsep=1.5ex}
+
+\newfloat{grafikoa}{H}{grf}[chapter]
+\floatname{grafikoa}{Gráfico}
+
+% --- 8. Otros Paquetes ---
+\usepackage{pgfgantt}
+\usepackage{pdfpages}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=blue,
+    urlcolor=blue,
+    breaklinks=true
+}
+
+% --- 9. Comando de la Portada ---
+\newcommand{\portada}{
+    \begin{titlepage}
+        \begin{tikzpicture}[remember picture,overlay]
+            \node[anchor=north] at ([yshift=-3cm]current page.north) {
+                % Dejamos solo el nombre porque ya busca en la carpeta images
+                \includegraphics[width=10cm]{ehu.png}
+            };
+            \node at ([yshift=5.5cm]current page.center) [text width=15cm, align=center] {
+                {\Large \textbf{\carrera}} \\[1.2cm]
+            };
+            \node at ([yshift=1cm]current page.center) [text width=16cm, align=center] {
+                {\huge \textbf{\titulo}}
+            };
+            \node[anchor=south] at ([yshift=3cm]current page.south) {
+                \begin{tabular}{|p{7.5cm} p{7.5cm}|}
+                    \hline
+                    \multicolumn{2}{|l|}{} \\
+                    \multicolumn{2}{|l|}{\large \textbf{Estudiante:} \alumno} \\
+                    \multicolumn{2}{|l|}{} \\
+                    \multicolumn{2}{|l|}{\large \textbf{Director/a:} \direccionA}  \\
+                    \multicolumn{2}{|l|}{} \\ \hline
+                    & \\
+                    \large \textbf{Curso:} \curso & \large \textbf{Fecha:} \fecha  \\
+                    & \\ \hline
+                \end{tabular}
+            };
+        \end{tikzpicture}
+    \end{titlepage}
+}

@@ -1,0 +1,91 @@
+% !TEX program = xelatex
+% !TEX root = main_eus.tex
+% ------------------------------------------------------------ %
+% DOKUMENTUAREN DATUAK                                         %
+% ------------------------------------------------------------ %
+
+% Izenburua:
+\newcommand{\titulo}{<Lanaren izenburua>}
+% Ikasturtea:
+\newcommand{\curso}{<XXXX-XXXX>}
+% Gradua:
+\newcommand{\carrera}{XXXXXXXX Gradua}
+% Ikaslea:
+\newcommand{\alumno}{<1. abizena, 2. abizena, izena>}
+% GRALaren 1. zuzendaria:
+\newcommand{\direccionA}{<1. abizena, 2. abizena, izena>}
+% GRALaren 2. zuzendaria (ez badago, iruzkindu lerro hau hemen eta preamble.tex fitxategian ere bai):
+\newcommand{\direccionB}{<1. abizena, 2. abizena, izena>}
+% Data:
+\newcommand{\fecha}{<XXXX, urtea, hilabetea, eguna>}
+% ------------------------------------------------------------ %
+
+\input{preamble.tex}
+
+% ------------------------------------------------------------ %
+
+\begin{document}
+
+    \portada
+    \thispagestyle{empty}
+    \setcounter{page}{0}
+
+    % LABURPENA:
+    \include{src_eus/laburpena}
+    \pagebreak
+
+    \setcounter{tocdepth}{1}
+    \tableofcontents
+
+    % AURKIBIDEAK:
+    \cleardoublepage
+    \phantomsection
+    \addcontentsline{toc}{chapter}{\listfigurename}
+    \listoffigures % Irudien zerrenda
+
+    \cleardoublepage
+    \phantomsection
+    \addcontentsline{toc}{chapter}{\listtablename}
+    \listoftables % Taulen zerrenda
+
+    \cleardoublepage
+    \include{src_eus/akronimoak} % Akronimoen zerrenda
+
+    % MEMORIA:
+
+    \include{src_eus/sarrera}
+    \include{src_eus/testuingurua}
+    \include{src_eus/artearenegoera}
+    \include{src_eus/helburuak}
+    \include{src_eus/onurak}
+    \include{src_eus/alternatibak}
+    \include{src_eus/arriskuak}
+    \include{src_eus/soluzioa}
+
+    % LANA GARATZEKO ERABILITAKO METODOLOGIA:
+
+    \include{src_eus/gantt}
+    \include{src_eus/algoritmoak}
+    \include{src_eus/emaitzak}
+    \include{src_eus/plangintza}
+
+    % ALDERDI EKONOMIKOAK:
+
+    \include{src_eus/aurrekontua}
+    \include{src_eus/errentagarritasuna}
+
+    % ONDORIOAK:
+
+    \include{src_eus/ondorioak}
+
+    % BIBLIOGRAFIA:
+
+    \include{src_eus/bibliografia}
+
+    % ERANSKINAK:
+
+    \include{src_eus/araudia}
+    \include{src_eus/planoak}
+    \include{src_eus/eskuliburuak}
+
+\end{document}

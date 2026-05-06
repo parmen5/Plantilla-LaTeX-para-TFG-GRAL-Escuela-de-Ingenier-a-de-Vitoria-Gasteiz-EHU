@@ -1,0 +1,91 @@
+% !TEX program = xelatex
+% !TEX root = main_cast.tex
+% ------------------------------------------------------------ %
+% DATOS DEL DOCUMENTO                                          %
+% ------------------------------------------------------------ %
+
+% Título:
+\newcommand{\titulo}{<Título del trabajo>}
+% Curso académico:
+\newcommand{\curso}{<XXXX-XXXX>}
+% Grado:
+\newcommand{\carrera}{Grado en XXXXXXXX}
+% Estudiante:
+\newcommand{\alumno}{<1er apellido, 2º apellido, nombre>}
+% 1er director/a del TFG:
+\newcommand{\direccionA}{<1er apellido, 2º apellido, nombre>}
+% 2º director/a del TFG (comentar si no aplica):
+\newcommand{\direccionB}{<1er apellido, 2º apellido, nombre>}
+% Fecha:
+\newcommand{\fecha}{<XXXX, año, mes, día>}
+% ------------------------------------------------------------ %
+
+\input{preamble.tex}
+
+% ------------------------------------------------------------ %
+
+\begin{document}
+
+    \portada
+    \thispagestyle{empty}
+    \setcounter{page}{0}
+
+    % RESUMEN:
+    \include{src_cast/resumen}
+    \pagebreak
+
+    \setcounter{tocdepth}{1}
+    \tableofcontents
+
+    % ÍNDICES:
+    \cleardoublepage
+    \phantomsection
+    \addcontentsline{toc}{chapter}{\listfigurename}
+    \listoffigures
+
+    \cleardoublepage
+    \phantomsection
+    \addcontentsline{toc}{chapter}{\listtablename}
+    \listoftables
+
+    \cleardoublepage
+    \include{src_cast/acronimos}
+
+    % MEMORIA:
+
+    \include{src_cast/intro}
+    \include{src_cast/contexto}
+    \include{src_cast/estadodelarte}
+    \include{src_cast/objetivos}
+    \include{src_cast/beneficios}
+    \include{src_cast/alternativas}
+    \include{src_cast/riesgos}
+    \include{src_cast/solucion}
+
+    % METODOLOGÍA Y DESARROLLO:
+
+    \include{src_cast/gantt}
+    \include{src_cast/algoritmos}
+    \include{src_cast/resultados}
+    \include{src_cast/planificacion}
+
+    % ASPECTOS ECONÓMICOS:
+
+    \include{src_cast/presupuesto}
+    \include{src_cast/rentabilidad}
+
+    % CONCLUSIONES:
+
+    \include{src_cast/conclusiones}
+
+    % BIBLIOGRAFÍA:
+
+    \include{src_cast/bibliografia}
+
+    % ANEXOS:
+
+    \include{src_cast/normativa}
+    \include{src_cast/planos}
+    \include{src_cast/manuales}
+
+\end{document}

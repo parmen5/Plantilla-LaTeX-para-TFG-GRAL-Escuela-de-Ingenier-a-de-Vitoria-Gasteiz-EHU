@@ -1,0 +1,21 @@
+# Archivos temporales de LaTeX
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex(busy)
+*.synctex.gz
+*.xdv
+
+# Ignorar la carpeta build que genera VS Code (opcional, pero recomendado)
+build/
+
+# Archivos ocultos del sistema operativo (Mac/Windows)
+.DS_Store
+Thumbs.db
